@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "371166574334",
+    "project_id": "perpushub",
+    "storage_bucket": "perpushub.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371166574334:android:c0f3dd3eec58e7525797af",
+        "android_client_info": {
+          "package_name": "com.example.gambarhub"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlsCaR9x1dFtYvJ_bfTpU41wq_Tx25F9Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
