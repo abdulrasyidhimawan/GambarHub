@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Layer background putih -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" /> <!-- Warna putih -->
+        </shape>
+    </item>
+
+    <!-- Layer background gradient -->
+    <item>
+        <shape android:shape="rectangle">
+            <gradient
+                android:startColor="#20486FE3"
+                android:endColor="#20AD8E28"
+                android:angle="-90" />
+        </shape>
+    </item>
+</layer-list>
