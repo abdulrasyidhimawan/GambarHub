@@ -2,6 +2,7 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -9,7 +10,7 @@
 
 
     <!-- Navbar -->
-    <include
+    <com.example.gambarhub.NavbarLogic
         android:id="@+id/navbar"
         layout="@layout/navbar"
         android:layout_width="0dp"
@@ -49,6 +50,7 @@
         app:layout_constraintTop_toBottomOf="@id/beranda_labelusername" />
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listbuku"
         android:layout_width="0dp"
         android:layout_height="747dp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -83,7 +83,7 @@
         android:paddingEnd="16dp"
         android:textColor="@color/black"
         android:textColorHint="#949494"
-        android:textSize="1sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
