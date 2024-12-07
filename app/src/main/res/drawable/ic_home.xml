@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- State saat item ditekan -->
+    <item android:drawable="@drawable/iconhome_focus" android:state_pressed="true" />
+
+    <!-- State saat item dipilih -->
+    <item android:drawable="@drawable/iconhome_focus" android:state_selected="true" />
+
+    <!-- Default state -->
+    <item android:drawable="@drawable/iconhome_unfocus" />
+</selector>
