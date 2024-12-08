@@ -44,3 +44,8 @@ public class Profil extends AppCompatActivity {
         });
     }
 }
+// ini buat linearlayout bisa jadi tommbol ditindis :D
+//val buttonBukuFavorit = findViewById<LinearLayout>(R.id.button_buku_favorit)
+//        buttonBukuFavorit.setOnClickListener {
+//        // isi disini coy aksinya
+//        }
