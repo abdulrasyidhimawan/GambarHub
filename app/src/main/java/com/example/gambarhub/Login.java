@@ -2,6 +2,7 @@ package com.example.gambarhub;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,15 +16,19 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Login extends AppCompatActivity {
     private EditText emailinput;
     private EditText passwordinput;
     private Button loginButton;
     private TextView daftarlink;
     private ImageView logingoogle;
+    private FirebaseAuth firebaseAuth;
 
-    private final String validEmail = "Gambarhub";
-    private final String validPassword = "123456";
+
+//    private final String validEmail = "Gambarhub";
+//    private final String validPassword = "123456";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +42,8 @@ public class Login extends AppCompatActivity {
         daftarlink = findViewById(R.id.targetDaftar);
         logingoogle = findViewById(R.id.logo1);
 
+        firebaseAuth = FirebaseAuth.getInstance();
+
         daftarlink.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,30 +52,47 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        loginButton.setOnClickListener(v -> {
-            String enteredEmail = emailinput.getText().toString().trim();
-            String enteredPassword = passwordinput.getText().toString().trim();
-
-            // Validate email and password
-            if (enteredEmail.isEmpty() || enteredPassword.isEmpty()) {
-                // Show error message if any field is empty
-                Toast.makeText(Login.this, "Please enter email and password!", Toast.LENGTH_SHORT).show();
-            } else if (enteredEmail.equals(validEmail) && enteredPassword.equals(validPassword)) {
-                // Correct credentials: Navigate to new layout
-                Intent intent = new Intent(Login.this, Beranda.class); // Replace with your target activity
-                startActivity(intent);
-                finish(); // Optional: Close login activity
-            } else {
-                // Incorrect credentials: Show error message
-                Toast.makeText(Login.this, "Invalid email or password. Try again!", Toast.LENGTH_SHORT).show();
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginUser();
             }
         });
+
+
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+    }
+    private void loginUser() {
+        String mail = emailinput.getText().toString();
+        String pass = passwordinput.getText().toString();
+
+        if (TextUtils.isEmpty(mail)){
+            emailinput.setError("Email tidak boleh kosong!");
+            return;
+        }
+        if (TextUtils.isEmpty(pass)){
+            passwordinput.setError("Password tidak boleh kosong!");
+            return;
+        }
+        if (pass.length() < 6){
+            passwordinput.setError("Password harus lebih dari 6 karakter!");
+        }
+        firebaseAuth.signInWithEmailAndPassword(mail, pass)
+                .addOnCompleteListener(task -> {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(Login.this, "Login berhasil!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(Login.this, Beranda.class)); // Ganti ke activity utama
+                        finish();
+                    } else {
+                        Toast.makeText(Login.this, "Login gagal: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
 
     }
 }
