@@ -9,7 +9,6 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
@@ -25,7 +24,6 @@ public class Login extends AppCompatActivity {
     private TextView daftarlink;
     private ImageView logingoogle;
     private FirebaseAuth firebaseAuth;
-
 
 //    private final String validEmail = "Gambarhub";
 //    private final String validPassword = "123456";
@@ -58,8 +56,6 @@ public class Login extends AppCompatActivity {
                 loginUser();
             }
         });
-
-
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
