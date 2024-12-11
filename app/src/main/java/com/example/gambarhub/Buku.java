@@ -10,10 +10,8 @@ public class Buku implements Parcelable {
     private String pdfUrl;
     private String description;
 
-    // Konstruktor kosong (penting untuk Firebase)
     public Buku() {}
 
-    // Konstruktor dengan semua parameter
     public Buku(String title, String author, String coverUrl, String pdfUrl, String description) {
         this.title = title;
         this.author = author;
@@ -22,7 +20,6 @@ public class Buku implements Parcelable {
         this.description = description;
     }
 
-    // Getter dan Setter untuk setiap atribut
     public String getTitle() {
         return title;
     }
@@ -63,7 +60,7 @@ public class Buku implements Parcelable {
         this.description = description;
     }
 
-    // Implementasi Parcelable
+    // Parcelable implementation
     protected Buku(Parcel in) {
         title = in.readString();
         author = in.readString();

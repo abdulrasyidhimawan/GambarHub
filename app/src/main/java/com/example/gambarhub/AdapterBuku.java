@@ -1,8 +1,6 @@
 package com.example.gambarhub;
 
 import android.content.Context;
-import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,21 +11,16 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+
 import java.util.List;
 
 public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BookViewHolder> {
     private List<Buku> bookList;
     private Context context;
-    private OnBookClickListener listener;
 
-    public interface OnBookClickListener {
-        void onBookClick(Buku book);
-    }
-
-    public AdapterBuku(Context context, List<Buku> bookList, OnBookClickListener listener) {
+    public AdapterBuku(Context context, List<Buku> bookList) {
         this.context = context;
         this.bookList = bookList;
-        this.listener = listener;
     }
 
     @NonNull
@@ -44,13 +37,12 @@ public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BookViewHolder
         holder.authorTextView.setText(book.getAuthor());
         Glide.with(context).load(book.getCoverUrl()).into(holder.coverImageView);
 
+        // Tambahkan onClickListener langsung di sini
         holder.itemView.setOnClickListener(v -> {
-            Buku buku = bookList.get(position);
-            Log.d("AdapterBuku", "Book clicked: " + buku.getTitle()); // Debugging
-
-            Intent intent = new Intent(context, detailbuku.class);
-            intent.putExtra("buku", buku);  // Mengirim objek Buku ke DetailBuku
-            context.startActivity(intent);
+            if (context instanceof Beranda) {
+                Beranda berandaActivity = (Beranda) context;
+                berandaActivity.openBacaActivity(book);
+            }
         });
     }
 

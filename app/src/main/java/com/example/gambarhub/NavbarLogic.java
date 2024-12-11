@@ -38,6 +38,8 @@ public class NavbarLogic extends LinearLayout {
         if (context instanceof Beranda) {
             if (buttonId == 2) {
                 intent = new Intent(context, Baca.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  // Membuka Baca di task baru
+                context.startActivity(intent);
             } else if (buttonId == 3) {
                 intent = new Intent(context, Profil.class);
             }
@@ -46,6 +48,8 @@ public class NavbarLogic extends LinearLayout {
                 intent = new Intent(context, Beranda.class);
             } else if (buttonId == 2) {
                 intent = new Intent(context, Baca.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  // Membuka Baca di task baru
+                context.startActivity(intent);
             }
         } else if (context instanceof Baca) {
             if (buttonId == 1) {

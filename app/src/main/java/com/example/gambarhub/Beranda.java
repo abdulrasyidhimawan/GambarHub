@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.TextView;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SearchView;
 import androidx.core.graphics.Insets;
@@ -22,12 +21,9 @@ import java.util.List;
 
 public class Beranda extends AppCompatActivity {
 
-    NavbarLogic navbarLogic;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_beranda);
 
         // Inisialisasi elemen UI
@@ -40,15 +36,11 @@ public class Beranda extends AppCompatActivity {
         List<Buku> bookList = new ArrayList<>();
 
         // Inisialisasi Adapter
-        AdapterBuku adapter = new AdapterBuku(this, bookList, book -> {
-            Intent intent = new Intent(Beranda.this, detailbuku.class);
-            intent.putExtra("Buku", book); // Perbaikan: Gunakan objek, bukan kelas
-            startActivity(intent);
-        });
-
-        // Set RecyclerView's LayoutManager dan Adapter
-        listbuku.setLayoutManager(new LinearLayoutManager(this));
+        AdapterBuku adapter = new AdapterBuku(this, bookList);
         listbuku.setAdapter(adapter);
+
+        // Set RecyclerView's LayoutManager
+        listbuku.setLayoutManager(new LinearLayoutManager(this));
 
         // Fetch data dari Firebase Firestore
         db.collection("books")
@@ -72,5 +64,13 @@ public class Beranda extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+    }
+
+    // Metode untuk membuka Activity Baca
+    public void openBacaActivity(Buku book) {
+        Intent intent = new Intent(this, Baca.class);
+        intent.putExtra("Buku", book); // Mengirim objek buku
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
     }
 }
