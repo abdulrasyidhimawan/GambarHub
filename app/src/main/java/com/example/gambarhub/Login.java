@@ -27,6 +27,8 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.GoogleAuthProvider;
 
+import java.util.Objects;
+
 public class Login extends AppCompatActivity {
     private EditText emailinput;
     private EditText passwordinput;
@@ -51,6 +53,7 @@ public class Login extends AppCompatActivity {
         loginButton = findViewById(R.id.masuk_tombol);
         daftarlink = findViewById(R.id.targetDaftar);
         logingoogle = findViewById(R.id.logo1);
+        firebaseAuth = FirebaseAuth.getInstance();
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -147,10 +150,9 @@ public class Login extends AppCompatActivity {
                         startActivity(new Intent(Login.this, Beranda.class)); // Ganti ke activity utama
                         finish();
                     } else {
-                        Toast.makeText(Login.this, "Login gagal: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(Login.this, "Login gagal: " + Objects.requireNonNull(task.getException()).getMessage(), Toast.LENGTH_SHORT).show();
                     }
                 });
-
     }
 
 }
