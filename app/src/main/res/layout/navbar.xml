@@ -47,7 +47,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Buku"
+            android:text="Tambah Buku"
             android:textColor="@color/white"
             android:textSize="12sp" />
     </LinearLayout>

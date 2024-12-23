@@ -37,7 +37,7 @@ public class NavbarLogic extends LinearLayout {
         // Determine navigation based on buttonId and context
         if (context instanceof Beranda) {
             if (buttonId == 2) {
-                intent = new Intent(context, Baca.class);
+                intent = new Intent(context, activity_add_book.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  // Membuka Baca di task baru
                 context.startActivity(intent);
             } else if (buttonId == 3) {
@@ -47,7 +47,7 @@ public class NavbarLogic extends LinearLayout {
             if (buttonId == 1) {
                 intent = new Intent(context, Beranda.class);
             } else if (buttonId == 2) {
-                intent = new Intent(context, Baca.class);
+                intent = new Intent(context, activity_add_book.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);  // Membuka Baca di task baru
                 context.startActivity(intent);
             }
