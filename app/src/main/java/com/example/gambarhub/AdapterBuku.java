@@ -35,6 +35,7 @@ public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BookViewHolder
         Buku book = bookList.get(position);
         holder.titleTextView.setText(book.getTitle());
         holder.authorTextView.setText(book.getAuthor());
+        holder.descriptionTextView.setText(book.getDescription()); // Tambahkan deskripsi
         Glide.with(context).load(book.getCoverUrl()).into(holder.coverImageView);
 
         // Tambahkan onClickListener langsung di sini
@@ -52,13 +53,14 @@ public class AdapterBuku extends RecyclerView.Adapter<AdapterBuku.BookViewHolder
     }
 
     public static class BookViewHolder extends RecyclerView.ViewHolder {
-        TextView titleTextView, authorTextView;
+        TextView titleTextView, authorTextView, descriptionTextView;
         ImageView coverImageView;
 
         public BookViewHolder(@NonNull View itemView) {
             super(itemView);
             titleTextView = itemView.findViewById(R.id.book_title);
             authorTextView = itemView.findViewById(R.id.book_author);
+            descriptionTextView = itemView.findViewById(R.id.book_desc); // Inisialisasi deskripsi
             coverImageView = itemView.findViewById(R.id.book_cover);
         }
     }
