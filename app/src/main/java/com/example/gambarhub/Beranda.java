@@ -28,7 +28,7 @@ public class Beranda extends AppCompatActivity {
 
         // Inisialisasi elemen UI
         TextView username = findViewById(R.id.beranda_labelusername);
-        SearchView searchBar = findViewById(R.id.search_bar);
+//        SearchView searchBar = findViewById(R.id.search_bar);
         RecyclerView listbuku = findViewById(R.id.listbuku);
 
         // Firebase Firestore setup
