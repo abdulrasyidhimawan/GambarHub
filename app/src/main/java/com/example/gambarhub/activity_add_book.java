@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class activity_add_book extends AppCompatActivity {
 
     private EditText etTitle, etAuthor, etDescription, etCoverUrl, etPdfUrl;
     private Button btnAddBook;
+    private ImageButton btnBack;
 
     private FirebaseFirestore firestore;
 
@@ -35,9 +37,12 @@ public class activity_add_book extends AppCompatActivity {
         etCoverUrl = findViewById(R.id.etCoverUrl);
         etPdfUrl = findViewById(R.id.etPdfUrl);
         btnAddBook = findViewById(R.id.btnAddBook);
+        btnBack = findViewById(R.id.addbook_back);
 
         // Set Listener untuk Button
         btnAddBook.setOnClickListener(v -> addBookToFirestore());
+        btnBack.setOnClickListener(v -> finish());
+
     }
 
     private void addBookToFirestore() {

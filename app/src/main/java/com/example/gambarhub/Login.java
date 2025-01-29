@@ -63,7 +63,7 @@ public class Login extends AppCompatActivity {
         });
 
         FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-        if (currentUser!= null) {
+        if (currentUser != null) {
             // User sudah login, arahkan ke halaman utama
             startActivity(new Intent(this, Beranda.class));
         }
